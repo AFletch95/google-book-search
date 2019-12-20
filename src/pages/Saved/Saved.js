@@ -3,7 +3,8 @@ import BookCard from "../../components/BookCard";
 
 const SavedPage = () => {
 
-  const [databaseButton, setDatabaseButton] = useState("Delete")
+  const [databaseButton] = useState("Delete")
+  const [databaseButtonColor] = useState("btn btn-danger")
   const [bookTitle, setBookTitle] = useState("Book Title");
   const [bookAuthor, setBookAutor] = useState("Book Author");
   const [bookImage, setBookImage] = useState("./book-image-placeholder.svg");
@@ -14,7 +15,14 @@ const SavedPage = () => {
       <div className="container-fluid text-left" style={{ backgroundColor: "lightGray", padding: "1.5rem 1rem", width: "93vw", border: "solid black 1px" }}>
         <h4>Saved Books</h4>
         {/* BookCards go here */}
-        <BookCard bookTitle={bookTitle} bookAuthor={bookAuthor} bookImage={bookImage} bookDescription={bookDescription} databaseButton={databaseButton} />
+        <BookCard
+          bookTitle={bookTitle}
+          bookAuthor={bookAuthor}
+          bookImage={bookImage}
+          bookDescription={bookDescription}
+          databaseButton={databaseButton}
+          databaseButtonColor={databaseButtonColor}
+        />
       </div>
 
     </div>

@@ -4,15 +4,15 @@ const BookCard = (props) => {
 
   return (
     <div className="container-fluid" style={{ padding: "1rem", border: "solid black 1px" }}>
-      <div className="row">
+      <div className="row ">
         <div className="col-6" style={{ margin: "0" }}>
 
           <h5>{props.bookTitle}</h5>
+        </div>
 
-          <div className="col-6" style={{ margin: "0" }}>
-            <button className="btn btn-primary">View</button>
-            <button className="btn btn-secondary">{props.databaseButton}</button>
-          </div>
+        <div className="col-6 d-flex justify-content-end">
+          <button className="btn btn-primary mr-1">View</button>
+          <button className={props.databaseButtonColor}>{props.databaseButton}</button>
         </div>
       </div>
       <p>Writen By {props.bookAuthor}</p>
