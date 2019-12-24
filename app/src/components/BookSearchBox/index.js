@@ -1,16 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
 
-const BookSearchBox = () => {
+const BookSearchBox = (props) => {
 
   const [userSearch, setUserSearch] = useState("");
+  // const [apiData, setApiData] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault()
     API.getBookSearch(userSearch).then(res => {
       console.log(res);
-    })
+
+      let tempArr = []
+      if (res) {
+        for (let i = 0; i < 6; i++) {
+          tempArr[i] = {
+            title: res.data.items[i].volumeInfo.title,
+            authors: res.data.items[i].volumeInfo.authors,
+            img: res.data.items[i].volumeInfo.imageLinks.thumbnail,
+            desc: res.data.items[i].volumeInfo.description,
+            link: res.data.items[i].volumeInfo.infoLink,
+
+          }
+
+        } //end for loop
+        console.log("tempArr", tempArr)
+        props.setApiData(tempArr);
+
+      } //end if
+
+    })  //end .then
   }
+  useEffect(() => (console.log("MY DATA", props.apiData)))
 
   return (
 

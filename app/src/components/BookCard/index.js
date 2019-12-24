@@ -11,8 +11,8 @@ const BookCard = (props) => {
         </div>
 
         <div className="col-6 d-flex justify-content-end">
-          <button className="btn btn-primary mr-1">View</button>
-          <button className={props.databaseButtonColor}>{props.databaseButton}</button>
+          <a className="btn btn-primary mr-1" href={props.bookLink} target="_blank" rel="noopener noreferrer" >View</a>
+          <div className={props.databaseButtonColor}>{props.databaseButton}</div>
         </div>
       </div>
       <p>Writen By {props.bookAuthor}</p>
