@@ -3,8 +3,8 @@ const path = require('path');
 const mongoose = require("mongoose")
 
 const app = express();
+const db = require("./models");
 
-// const db = 
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -15,7 +15,10 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production")
   app.use(express.static(path.join(__dirname, 'app/build')));
 
-// Put all API endpoints under '/api'
+// connect to mongo db
+mongoose.connect("mongodb://localhost/savedBooksdb", { useNewUrlParser: true });
+// routes
+
 
 
 // The "catchall" handler: for any request that doesn't

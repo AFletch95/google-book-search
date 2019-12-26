@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import API from "../../utils/API";
 
 const BookSearchBox = (props) => {
@@ -9,7 +9,6 @@ const BookSearchBox = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     API.getBookSearch(userSearch).then(res => {
-      console.log(res);
 
       let tempArr = []
       if (res) {
@@ -24,14 +23,12 @@ const BookSearchBox = (props) => {
           }
 
         } //end for loop
-        console.log("tempArr", tempArr)
         props.setApiData(tempArr);
 
       } //end if
 
     })  //end .then
   }
-  useEffect(() => (console.log("MY DATA", props.apiData)))
 
   return (
 

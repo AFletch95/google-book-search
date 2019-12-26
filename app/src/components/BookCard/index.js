@@ -3,7 +3,7 @@ import React from "react";
 const BookCard = (props) => {
 
   return (
-    <div className="container-fluid" style={{ padding: "1rem", border: "solid black 1px" }}>
+    <div className="container-fluid mt-2 mb-2" style={{ padding: "1rem", border: "solid black 2px" }}>
       <div className="row ">
         <div className="col-6" style={{ margin: "0" }}>
 

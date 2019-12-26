@@ -6,7 +6,6 @@ const herokuKey = {
 }
 
 const myKey = process.env.REACT_APP_API_KEY;
-console.log("key", myKey)
 
 
 

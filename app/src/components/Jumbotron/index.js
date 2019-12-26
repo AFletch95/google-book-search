@@ -5,7 +5,8 @@ function Jumbotron(props) {
     <div className="jumbotron mx-auto" style={{ textAlign: "center", width: "90%", border: "solid 1px black" }}>
       <h1>Google Book Search</h1>
       <h5 className="text-muted">A react app by Austin Fletcher</h5>
-      <hr />
+      <a className="text-muted" href="https://github.com/AFletch95/google-book-search" rel="noopener noreferrer" target="_blank">view code on Github</a>
+      <hr className="mt-0" />
 
       <ul className="nav nav-tabs justify-content-center ">
         <li className="nav-item">
@@ -22,6 +23,7 @@ function Jumbotron(props) {
           >Saved Books</a>
         </li>
       </ul>
+
 
 
 
