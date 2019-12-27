@@ -4,7 +4,7 @@ const mongoose = require("mongoose")
 
 const app = express();
 
-app.set("db", require("./db"));
+app.set("db", require("/db"));
 
 
 app.use(express.urlencoded({ extended: true }));
