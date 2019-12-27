@@ -3,7 +3,8 @@ const path = require('path');
 const mongoose = require("mongoose")
 
 const app = express();
-const db = require("./models");
+
+app.set("db", require("./db"));
 
 
 app.use(express.urlencoded({ extended: true }));
