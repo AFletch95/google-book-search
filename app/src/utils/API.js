@@ -19,5 +19,18 @@ export default {
     }).catch(err => {
       console.error(err)
     })
-  }
+  },
+
+  getBooks: function() {
+    return axios.get("/api/books");
+  },
+  insertBook: function(bookData) {
+    return axios.post("/api/books", bookData)
+  },
+  deleteBook: function(id) {
+    return axios.delete("/api/books" + id)
+  },
+  
 }
+
+

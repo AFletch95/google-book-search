@@ -1,8 +1,8 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const mongoose = require("mongoose")
-const Book = require("./models/Book");
+const routes = require("./routes");
+const mongoose = require("mongoose");
 
 // app.set("db", require("./models/books"));
 
@@ -18,17 +18,18 @@ if (process.env.NODE_ENV === "production")
 
 // connect to mongo db
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", { useNewUrlParser: true, useUnifiedTopology: true });
+
 // routes
+app.use(routes);
+// // get all books in the database
+// app.get("/api/books", bookController.getBooks)
+// // save a book to the database
+// app.post("/api/books",  bookController.insertBook)
+// // delete a book from the database
+// app.delete("/api/books/:id", bookController.deleteBook)
 
 
-
-// The "catchall" handler: for any request that doesn't
-// match one above, send back React's index.html file.
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './app/build/index.html'));
-});
-
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3001;
 app.listen(port);
 
 console.log(`Listening on ${port}`);
