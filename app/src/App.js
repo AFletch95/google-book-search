@@ -7,16 +7,17 @@ import SavedPage from './pages/Saved/Saved';
 function App() {
 
   const [currentPage, setCurrentPage] = useState("Search");
+  const [savedBooks, setSavedBooks] = useState([]);
 
   const renderPage = () => {
 
     switch (currentPage) {
       case "Search":
-        return <SearchPage />
+        return <SearchPage savedBooks={savedBooks} setSavedBooks={setSavedBooks} />
       case "Saved":
-        return <SavedPage />
+        return <SavedPage savedBooks={savedBooks} setSavedBooks={setSavedBooks} />
       default:
-        return <SearchPage />
+        return <SearchPage savedBooks={savedBooks} setSavedBooks={setSavedBooks} />
     }
   }
   return (

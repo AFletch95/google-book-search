@@ -1,8 +1,19 @@
 import React, { useState } from "react";
 import BookSearchBox from "../../components/BookSearchBox";
 import BookCard from "../../components/BookCard";
+import database from "../../utils/API";
 
-const SearchPage = () => {
+const SearchPage = (props) => {
+
+  const handleBookCardClick = () => {
+    insertBook();
+  }
+
+  const insertBook = (bookData) => {
+    database.insertBook()
+    .then(props.savedBooks.push(bookData))
+    .catch(err => console.error("INSERT BOOK ERROR", err))
+  }
 
   const [databaseButton] = useState("Save")
   const [databaseButtonColor] = useState("btn btn-success")
@@ -31,6 +42,7 @@ const SearchPage = () => {
             bookLink={data.link || bookLink}
             databaseButton={databaseButton}
             databaseButtonColor={databaseButtonColor}
+            handleBookCardClick={handleBookCardClick}
           />
         ))}
       </div>
