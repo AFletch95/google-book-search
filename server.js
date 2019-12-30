@@ -1,10 +1,10 @@
 const express = require('express');
 const path = require('path');
-const mongoose = require("mongoose")
-
 const app = express();
+const mongoose = require("mongoose")
+const Book = require("./models/Book");
 
-app.set("db", require("/db"));
+// app.set("db", require("./models/books"));
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "production")
   app.use(express.static(path.join(__dirname, 'app/build')));
 
 // connect to mongo db
-mongoose.connect("mongodb://localhost/savedBooksdb", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", { useNewUrlParser: true, useUnifiedTopology: true });
 // routes
 
 

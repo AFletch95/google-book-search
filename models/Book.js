@@ -6,25 +6,24 @@ const BookSchema = new Schema({
   title: {
     type: String,
     default: "Title Unknown",
-    required: false
+    required: true
   },
-  author: {
-    type: String,
+  authors: {
+    type: [String],
     default: "Author Unknown",
-    required: false
+    required: true
   },
   description: {
     type: String,
     default: "No description avaliable",
-    required: false
+    required: true
   },
   image: {
     type: String,
-    required: false
   },
   link: {
     type: String,
-    required: false
+    required: true
   },
 
 
