@@ -5,25 +5,21 @@ import database from "../../utils/API";
 
 const SearchPage = (props) => {
 
-  const handleBookCardClick = () => {    
-    console.log("save button")
+
+  // insert book into database
+  const insertBook = (title,authors,description,image,link) => {
     // Create data for book model in database
     // TODO: get data from clicked card and pass into the database
     let bookData = {
-      title: bookTitle,
-      authors: bookAuthor,
-      description: bookDescription,
-      image: bookImage,
-      link: bookLink
-    }
-    console.log("NEW BOOK DATA",bookData)
-    insertBook(bookData);
-  }
+      title,
+      authors,
+      description,
+      image,
+      link,
 
-  // insert book into database
-  const insertBook = (newBook) => {
-    database.insertBook(newBook)
-    .then(result => console.log(result))
+    }
+    database.insertBook(bookData)
+    .then()
     .catch(err => console.error("INSERT BOOK ERROR", err))
   }
 
@@ -57,7 +53,7 @@ const SearchPage = (props) => {
             bookLink={data.link || bookLink}
             databaseButton={databaseButton}
             databaseButtonColor={databaseButtonColor}
-            handleBookCardClick={handleBookCardClick}
+            handleBookCardClick={insertBook}
           />
         ))}
       </div>

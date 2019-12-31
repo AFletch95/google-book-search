@@ -12,7 +12,15 @@ const BookCard = (props) => {
 
         <div className="col-6 d-flex justify-content-end">
           <a className="btn btn-primary mr-1" href={props.bookLink} target="_blank" rel="noopener noreferrer" >View</a>
-          <div className={props.databaseButtonColor} onClick={props.handleBookCardClick}>{props.databaseButton}</div>
+          <div className={props.databaseButtonColor} onClick={() => 
+            props.handleBookCardClick(props._id? props._id :
+              props.bookTitle,
+              props.bookAuthor,
+              props.bookDescription,
+              props.bookImage,
+              props.bookLink,
+              )}
+          >{props.databaseButton}</div>
         </div>
       </div>
       <p>Writen By {props.bookAuthor}</p>

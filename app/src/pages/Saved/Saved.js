@@ -4,26 +4,24 @@ import database from "../../utils/API";
 
 const SavedPage = () => {
 
-  // load saved books from database
   useEffect(() => {
-    database.getBooks()
-    .then(result => {setSavedBooks(result.data)
-      console.log(result.data)
-    })
-    .catch(err => console.error(err))
+    getBooks();
   },[])
-
-  const handleBookCardClick = () => {    
-    console.log("delete button")
-    // TODO: get id from card and pass into delete route
-    deleteBook("book_id");
+  
+  // load saved books from database
+  const getBooks = () => {
+    database.getBooks()
+    .then(result => {setSavedBooks(result.data)})
+    .catch(err => console.error(err))
   }
+
+
 
 
   // delete book from database
   const deleteBook = (id) => {
     database.deleteBook(id)
-    .then(result => console.log(result))
+    .then(getBooks())
     .catch(err => console.error("DELETE BOOK ERROR", err))
   }
 
@@ -45,6 +43,7 @@ const SavedPage = () => {
         {savedBooks.map(data => (
           <BookCard
             key={data._id}
+            _id={data._id}
             bookTitle={data.title || bookTitle}
             bookAuthor={data.authors || bookAuthor}
             bookImage={data.image || bookImage}
@@ -52,7 +51,7 @@ const SavedPage = () => {
             bookLink={data.link || bookLink}
             databaseButton={databaseButton}
             databaseButtonColor={databaseButtonColor}
-            handleBookCardClick={handleBookCardClick}
+            handleBookCardClick={deleteBook}
           />
         ))}
       </div>
