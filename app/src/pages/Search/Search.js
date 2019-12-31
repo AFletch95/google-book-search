@@ -5,23 +5,37 @@ import database from "../../utils/API";
 
 const SearchPage = (props) => {
 
-  const handleBookCardClick = () => {
-    insertBook();
+  const handleBookCardClick = () => {    
+    console.log("save button")
+    // Create data for book model in database
+    // TODO: get data from clicked card and pass into the database
+    let bookData = {
+      title: bookTitle,
+      authors: bookAuthor,
+      description: bookDescription,
+      image: bookImage,
+      link: bookLink
+    }
+    console.log("NEW BOOK DATA",bookData)
+    insertBook(bookData);
   }
 
-  const insertBook = (bookData) => {
-    database.insertBook()
-    .then(props.savedBooks.push(bookData))
+  // insert book into database
+  const insertBook = (newBook) => {
+    database.insertBook(newBook)
+    .then(result => console.log(result))
     .catch(err => console.error("INSERT BOOK ERROR", err))
   }
 
   const [databaseButton] = useState("Save")
   const [databaseButtonColor] = useState("btn btn-success")
+
+  // needed data to fill book cards
   const [apiData, setApiData] = useState([]);
 
   const [bookTitle] = useState("Unknown Title");
   const [bookAuthor] = useState("Unknown Author");
-  const [bookLink] = useState("google.com/books")
+  const [bookLink] = useState("https://play.google.com/store/books/")
   const [bookImage] = useState("./book-image-placeholder.svg");
   const [bookDescription] = useState("No description avaliable.")
 
@@ -35,6 +49,7 @@ const SearchPage = (props) => {
         {/* BookCards go here */}
         {apiData.map(data => (
           <BookCard
+            key={data.id}
             bookTitle={data.title || bookTitle}
             bookAuthor={data.authors || bookAuthor}
             bookImage={data.img || bookImage}

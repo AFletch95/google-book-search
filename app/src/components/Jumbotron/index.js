@@ -11,7 +11,7 @@ function Jumbotron(props) {
       <ul className="nav nav-tabs justify-content-center ">
         <li className="nav-item">
           <a className={props.currentPage === "Search" ? "nav-link active" : "nav-link"}
-            href="#Search"
+            href="#SearchBooks"
             onClick={() => props.setCurrentPage("Search")}
           >Search</a>
         </li>

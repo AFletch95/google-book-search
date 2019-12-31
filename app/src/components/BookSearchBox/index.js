@@ -4,29 +4,33 @@ import API from "../../utils/API";
 const BookSearchBox = (props) => {
 
   const [userSearch, setUserSearch] = useState("");
-  // const [apiData, setApiData] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault()
     API.getBookSearch(userSearch).then(res => {
 
       let tempArr = []
-      if (res) {
-        for (let i = 0; i < 6; i++) {
+      if (res.data.totalItems > 0) {
+        for (let i = 0; i < res.data.totalItems && i < 6; i++) {
           tempArr[i] = {
             title: res.data.items[i].volumeInfo.title,
             authors: res.data.items[i].volumeInfo.authors,
             img: res.data.items[i].volumeInfo.imageLinks.thumbnail,
             desc: res.data.items[i].volumeInfo.description,
             link: res.data.items[i].volumeInfo.infoLink,
+            id: res.data.items[i].id,
 
           }
 
         } //end for loop
+
+        //store needed data from api call into parent state array
         props.setApiData(tempArr);
 
       } //end if
-
+      else {
+        alert("No books found")
+      }
     })  //end .then
   }
 
